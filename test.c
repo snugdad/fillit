@@ -6,7 +6,7 @@
 /*   By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 11:36:40 by egoodale          #+#    #+#             */
-/*   Updated: 2018/02/24 17:27:48 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:50:11 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,88 @@ size_t	ft_strlen_to_newline(char *str)
 	return (i);
 }
 
+/*int	ft_count_blocks(char *s)
+{
+	int blocks = 0;
+
+	while(*s)
+	{
+		while(*s == '\n' && *s)
+			s++;
+		if(*s)
+			blocks++;
+		while(*s !*/
+int 	**ft_tabdup(char *src, int len, int ref)
+{
+	int **tab;
+	int i = -1;
+	int j = 0;
+	int k = 0;
+
+	tab = (int **)malloc(sizeof(int*) * 4);
+	while(j < 4)	
+		tab[j++] = (int *)malloc(sizeof(int) * 4);
+	j = 0;
+	while(++i < len)
+	{
+		if(src[i] == '#')
+		{
+			tab[j][k] = ref + 1;
+			k++;
+		}
+		else if(src[i] == '.')
+		{
+			tab[j][k] = 0;
+			k++;
+		}
+		if(k > 3)
+		{
+			j++;
+			k = 0;
+		}
+	}
+	return (tab);
+}
+
+int		***split_block(char *input, int num_of_trmno)
+{
+	int		***block_arr;
+	int tb_num = 0;
+
+	block_arr = (int ***)malloc(sizeof(int **) * (num_of_trmno));
+	while(*input)
+	{
+		block_arr[tb_num] = ft_tabdup(input, 20, tb_num);
+		tb_num++;
+		input += 21;
+	}
+	for(int i = 0; i < tb_num; i++)
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			for(int k = 0; k < 4; k++)
+				printf("%d", block_arr[i][j][k]);
+			printf("\n\n");
+
+		}
+		printf("\n\n");
+	}
+	return(block_arr);
+}
+	
+void	pars_char(char *input, int num_of_trmno)
+{
+	int	i;
+	i = -1;
+	while(input[++i])
+	{
+		if(input[i] != '\n' || !VALID_C(input[i]))
+		   exit (0);
+	}
+	split_block(input, num_of_trmno);
+}	
+
+
 void	pars_input(char *input)
 {
 	size_t i;
@@ -70,7 +152,10 @@ void	pars_input(char *input)
 	}
 	printf("i: %d, num of sq: %d, sq_size: %d\n", (int)i, (int)num_of_sq, (int)sq_size);
 	if (!((i - num_of_sq) % (sq_size - 5)))
-		printf("number of tetrinos: %d", (int)num_of_sq);
+	{
+		printf("number of tetrinos: %d\n", (int)num_of_sq);
+		split_block(input, num_of_sq);
+	}
 }
 
 
