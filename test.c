@@ -6,7 +6,7 @@
 /*   By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 11:36:40 by egoodale          #+#    #+#             */
-/*   Updated: 2018/02/27 17:50:11 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:55:27 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,6 @@ size_t	ft_strlen_to_newline(char *str)
 	return (i);
 }
 
-/*int	ft_count_blocks(char *s)
-{
-	int blocks = 0;
-
-	while(*s)
-	{
-		while(*s == '\n' && *s)
-			s++;
-		if(*s)
-			blocks++;
-		while(*s !*/
 int 	**ft_tabdup(char *src, int len, int ref)
 {
 	int **tab;
@@ -68,15 +57,9 @@ int 	**ft_tabdup(char *src, int len, int ref)
 	while(++i < len)
 	{
 		if(src[i] == '#')
-		{
-			tab[j][k] = ref + 1;
-			k++;
-		}
+			tab[j][k++] = ref + 1;
 		else if(src[i] == '.')
-		{
-			tab[j][k] = 0;
-			k++;
-		}
+			tab[j][k++] = 0;
 		if(k > 3)
 		{
 			j++;
