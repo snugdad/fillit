@@ -6,7 +6,7 @@
 /*   By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 20:00:47 by egoodale          #+#    #+#             */
-/*   Updated: 2018/03/03 20:03:17 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:44:36 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void pars_input(char *input)
 	while (input[++i])
 	{   
 		if (!VALID_C(input[i]) ||
-				(ft_compare_block(i, sq_size - 5, num_of_sq) == 0))
+				(compare_block(i, sq_size - 5, num_of_sq) == 0))
 		{   
 			printf("INVALID TETRINO : %d\n", (int)num_of_sq + 1);
 			//  throw_err(1)
 			return;
 		}
-		i += ft_strlen_to_newline(input + i);
+		i += strlen_to_newline(input + i);
 		if (((i + 1) - num_of_sq) / sq_size == 4)
 		{
 			i++;
