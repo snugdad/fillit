@@ -17,10 +17,10 @@ int		compare_block(size_t pos, size_t sq_size, size_t num_of_sq)
 	if (pos < 20 || (pos - num_of_sq) % 20 != 0)
 		return (1);
 	else if ((pos - num_of_sq) % sq_size != 0)
-	{   
-		printf("no good in compare\n");
+	{
+		ft_putstr("error\n");
 		return (0);
-	}   
+	}
 	else
 		return (1);
 }
