@@ -6,7 +6,7 @@
 #    By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 20:09:58 by egoodale          #+#    #+#              #
-#    Updated: 2018/03/11 13:57:19 by egoodale         ###   ########.fr        #
+#    Updated: 2018/03/11 18:29:54 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 INCLUDES =  fillit.h
 
 LIBFT	= libft/libft.a
-CFLAGS = -g -Wall -Werror -Wextra -I $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -I $(INCLUDES)
 SRCS = compare_block.c\
 	   pars_char.c\
 	   strlen_to_newline.c\
